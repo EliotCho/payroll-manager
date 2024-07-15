@@ -10,9 +10,18 @@ const collectEmployees = function () {
   // loop to add employees
   while (addEmployee) {
     // prompt user for employee data
-    const firstName = prompt("Enter the employee's first name:");
-    const lastName = prompt("Enter the employee's last name:");
-    const salary = parseFloat(prompt("Enter the employee's salary:"));
+    let firstName = prompt("Enter the employee's first name:");
+    let lastName = prompt("Enter the employee's last name:");
+    let salary = prompt("Enter the employee's salary:");
+
+    if (isNaN(salary)) {
+      alert(
+        "Invalid salary input, will be calculated as default value of $0 (zero)."
+      );
+      salary = parseFloat(0);
+    } else {
+      salary = parseFloat(salary);
+    }
 
     // employee object
     const employee = {
@@ -41,7 +50,9 @@ const displayAverageSalary = function (employeesArray) {
 
   // calculate the average salary
   const averageSalary = totalSalary / employeesArray.length;
-  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${averageSalary}`);
+  console.log(
+    `The average employee salary between our ${employeesArray.length} employee(s) is ${averageSalary}`
+  );
 };
 
 // Select a random employee
@@ -50,7 +61,9 @@ const getRandomEmployee = function (employeesArray) {
   const randomIndex = Math.floor(Math.random() * employeesArray.length);
 
   // display the random employee
-  console.log(`Congratulations to ${employeesArray[randomIndex].firstName} ${employeesArray[randomIndex].lastName}, our random drawing winner!`);
+  console.log(
+    `Congratulations to ${employeesArray[randomIndex].firstName} ${employeesArray[randomIndex].lastName}, our random drawing winner!`
+  );
 };
 
 /*
